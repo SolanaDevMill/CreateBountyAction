@@ -7,7 +7,24 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 (async () => {
-    // const [pk, issueNumber, repoName, repoOwner, bountyAmount] = process.argv[2];
+    const pk = core.getInput('wallet-key');
+
+    // const payload = JSON.stringify(github.context.payload, undefined, 2);
+    const payload = github.context.payload;
+    const issueNumber = payload.issue?.number;
+    const repoName = payload.repository?.name;
+    const repoOwner = payload.repository?.owner.login;
+    
+    const regex = /DevMill Bounty: (\d+) SOL/;
+    const bountyAmount = Number.parseInt(payload.issue?.body?.match(regex)[1]);
+
+    console.log(JSON.stringify({
+        issueNumber: issueNumber,
+        repoName: repoName,
+        repoOwner: repoOwner,
+        bountyAmount: bountyAmount,
+        pk: pk
+    }));
 
     // const programId = "FAuRwCnsvpMHVBDcL47SGM5XSC7oY5u5u9VU3GDqWaZm";
     // let connection = new Connection(clusterApiUrl("devnet"));
@@ -30,8 +47,4 @@ const github = require('@actions/github');
     //     }).rpc()
 
     // console.log("yay");
-
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
-    console.log(payload);
 })();
-
