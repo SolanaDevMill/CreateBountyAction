@@ -6,7 +6,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-async () => {
+(async () => {
     // const [pk, issueNumber, repoName, repoOwner, bountyAmount] = process.argv[2];
 
     // const programId = "FAuRwCnsvpMHVBDcL47SGM5XSC7oY5u5u9VU3GDqWaZm";
@@ -33,5 +33,5 @@ async () => {
 
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(payload);
-}
+})();
 
