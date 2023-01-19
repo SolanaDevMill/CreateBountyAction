@@ -7,7 +7,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 (async () => {
-    const pk = core.getInput('wallet-key');
+    const pk = core.getInput('dev-mill-key');
 
     // const payload = JSON.stringify(github.context.payload, undefined, 2);
     const payload = github.context.payload;
@@ -25,7 +25,8 @@ const github = require('@actions/github');
         bountyAmount: bountyAmount,
         pk: pk
     }));
-
+    
+    core.setOutput('bounty-address', 'placeholder');
     // const programId = "FAuRwCnsvpMHVBDcL47SGM5XSC7oY5u5u9VU3GDqWaZm";
     // let connection = new Connection(clusterApiUrl("devnet"));
     // const wallet = new NodeWallet(Keypair.fromSecretKey(TexEncoder().encode(pk)));
