@@ -1,5 +1,5 @@
 name: 'Create Bounty'
 description: 'Create a bounty from a github issue'
 runs:
-  using: 'node18'
+  using: 'node16'
   main: 'index.js'
