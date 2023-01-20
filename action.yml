@@ -1,12 +1,14 @@
 name: 'Create Bounty'
 description: 'Create a bounty from a github issue'
-inputs:
-  dev-mill-key:
-    description: 'private key of the wallet used to create bounties'
-    required: true
 outputs:
   bounty-address:
     description: 'public address for the newly created bounty account'
+
+inputs:
+  wallet-key:
+    required: true
+    description: 'secret key of the wallet used to create bounty'
+
 runs:
   using: 'node16'
   main: 'index.js'

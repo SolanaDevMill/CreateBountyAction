@@ -7,7 +7,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 (async () => {
-    const pk = core.getInput('dev-mill-key');
+    const pk = core.getInput('wallet-key');
 
     // const payload = JSON.stringify(github.context.payload, undefined, 2);
     const payload = github.context.payload;
