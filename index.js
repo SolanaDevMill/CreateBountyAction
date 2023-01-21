@@ -24,11 +24,9 @@ const { bs58 } = require("@project-serum/anchor/dist/cjs/utils/bytes");
     const program = await anchor.Program.at(programId, provider);
 
     const [pda, _] = PublicKey.findProgramAddressSync(
-        [`bounty${issueNumber}${repoName}`],
+        [anchor.utils.bytes.utf8.encode(`bounty${issueNumber}${repoName}`)],
         program.programId
     );
-
-    console.log('pda: ' + pda.toString());
 
     await program.methods
         .createBounty(
