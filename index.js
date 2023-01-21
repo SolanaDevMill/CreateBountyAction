@@ -28,6 +28,8 @@ const { bs58 } = require("@project-serum/anchor/dist/cjs/utils/bytes");
         program.programId
     );
 
+    console.log('pda: ' + pda.toString());
+
     await program.methods
         .createBounty(
             issueNumber,
