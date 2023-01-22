@@ -24,7 +24,7 @@ const { bs58 } = require("@project-serum/anchor/dist/cjs/utils/bytes");
     const program = await anchor.Program.at(programId, provider);
 
     const [pda, __] = PublicKey.findProgramAddressSync(
-        [Uint8Array.from(Buffer.from(anchor.utils.sha256.hash(`bounty${issueNumber}${repoName}`)))],
+        [Uint8Array.from(Buffer.from(anchor.utils.sha256.hash(`bounty${issueNumber}${repoName}`), 'hex'))],
         program.programId
     );
 

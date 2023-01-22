@@ -66319,7 +66319,7 @@ const { bs58 } = __nccwpck_require__(5272);
     const program = await anchor.Program.at(programId, provider);
 
     const [pda, __] = PublicKey.findProgramAddressSync(
-        [Uint8Array.from(Buffer.from(anchor.utils.sha256.hash(`bounty${issueNumber}${repoName}`)))],
+        [Uint8Array.from(Buffer.from(anchor.utils.sha256.hash(`bounty${issueNumber}${repoName}`), 'hex'))],
         program.programId
     );
 
